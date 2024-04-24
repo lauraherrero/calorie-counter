@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { categories } from "../data/categories"
-import { Activity } from "../types";
+import { Activity, FormProps } from "../types";
 
 
 
-export const Form = () => {
+
+export const Form = ({dispatch}: FormProps) => {
 
   const [activity, setActivity] = useState<Activity>({
     category: 1,
@@ -29,11 +30,17 @@ export const Form = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setActivity({
-      category: 1,
-      name: '',
-      calories: 0
+    dispatch({
+      type: 'SAVE_ACTIVITY',
+      payload: {
+        newActivity: activity 
+      }
     })
+    // setActivity({
+    //   category: 1,
+    //   name: '',
+    //   calories: 0
+    // })
   }
 
   return (
