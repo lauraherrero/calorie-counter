@@ -1,3 +1,4 @@
+import { ActivityList } from './../components/ActivityList';
 import { Dispatch } from "react"
 import { ActivityActions } from "../reducers/activityReducer"
 
@@ -15,4 +16,8 @@ export type Activity = {
 
 export type FormProps = {
   dispatch: Dispatch<ActivityActions>
+}
+
+export type ActivityListProps = {
+  activities: Activity[]
 }
