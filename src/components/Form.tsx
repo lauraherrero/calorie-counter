@@ -1,17 +1,20 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { categories } from "../data/categories"
 import { Activity, FormProps } from "../types";
 
 
-
+const INITIAL_STATE: Activity = {
+  id: uuidv4(),
+  category: 1,
+  name: '',
+  calories: 0
+}
 
 export const Form = ({dispatch}: FormProps) => {
+  
 
-  const [activity, setActivity] = useState<Activity>({
-    category: 1,
-    name: '',
-    calories: 0
-  });
+  const [activity, setActivity] = useState<Activity>(INITIAL_STATE);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
 
@@ -36,11 +39,11 @@ export const Form = ({dispatch}: FormProps) => {
         newActivity: activity 
       }
     })
-    // setActivity({
-    //   category: 1,
-    //   name: '',
-    //   calories: 0
-    // })
+    setActivity({
+      ...INITIAL_STATE,
+      id: uuidv4()
+      //Llamamos nuevamente al id y la función de uuid para que se ejecute nuevamente la función y  y genere un id distinto y único.
+    })
   }
 
   return (
