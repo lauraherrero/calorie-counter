@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { categories } from "../data/categories"
 import { Activity, FormProps } from "../types";
@@ -11,10 +12,18 @@ const INITIAL_STATE: Activity = {
   calories: 0
 }
 
-export const Form = ({dispatch}: FormProps) => {
+export const Form = ({dispatch, state}: FormProps) => {
   
 
   const [activity, setActivity] = useState<Activity>(INITIAL_STATE);
+
+  useEffect(() => {
+    if(state.activeId ) {
+      const selectedActivity = state.activities.filter(stateActivity => stateActivity.id === state.activeId)[0]
+      
+      setActivity(selectedActivity);      
+    }
+  }, [state.activeId]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
 

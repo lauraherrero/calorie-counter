@@ -1,25 +1,43 @@
-import { Activity } from './../types/index';
+import { Activity, ActivityState } from './../types/index';
 export type ActivityActions = {
   type: 'SAVE_ACTIVITY',
-  payload: { newActivity: Activity },
+  payload: { newActivity: Activity } 
+} | {
+  type: 'SET_ACTIVEID',
+  payload: {  id: string },
 }
 
-type ActivityState = {
-  activities: Activity[];
-}
+
 
 export const initialState : ActivityState = {
-  activities: []
+  activities: [],
+  activeId: ''
 }
 
 export const activityReducer = (state : ActivityState = initialState, action : ActivityActions) => {
   if(action.type === 'SAVE_ACTIVITY') {
     //Este código maneja la lógica para actualizar el state
+
+    let updatedActivities: Activity[] = [];
+
+    if(state.activeId) {
+      updatedActivities = state.activities.map(activity => activity.id === state.activeId ? action.payload.newActivity : activity)
+    } else {
+      updatedActivities = [...state.activities, action.payload.newActivity]
+    }
+
     return {
       ...state,
-      activities: [...state.activities, action.payload.newActivity]
+      activities: updatedActivities,
+      activeId: ''
     }
-    
+  }
+
+  if(action.type === 'SET_ACTIVEID') {
+    return {
+      ...state,
+      activeId: action.payload.id
+    }
   }
   return state;
 }

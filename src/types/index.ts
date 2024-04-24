@@ -1,4 +1,3 @@
-import { ActivityList } from './../components/ActivityList';
 import { Dispatch } from "react"
 import { ActivityActions } from "../reducers/activityReducer"
 
@@ -14,10 +13,17 @@ export type Activity = {
   calories: number
 }
 
+export type ActivityState = {
+  activities: Activity[];
+  activeId: string
+}
+
 export type FormProps = {
   dispatch: Dispatch<ActivityActions>
+  state: ActivityState
 }
 
 export type ActivityListProps = {
-  activities: Activity[]
+  activities: Activity[],
+  dispatch: React.Dispatch<ActivityActions>
 }
