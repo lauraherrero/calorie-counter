@@ -1,15 +1,13 @@
 import { Activity, ActivityState } from './../types/index';
-export type ActivityActions = {
-  type: 'SAVE_ACTIVITY',
-  payload: { newActivity: Activity } 
+export type ActivityActions = 
+{
+  type: 'SAVE_ACTIVITY', payload: { newActivity: Activity } 
 } | {
-  type: 'SET_ACTIVEID',
-  payload: {  id: string },
+  type: 'SET_ACTIVEID', payload: {  id: string },
 } | {
-  type: 'DELETE_ACTIVITY',
-  payload: {
-    id: string
-  }
+  type: 'DELETE_ACTIVITY', payload: { id: string }
+} | {
+  type: 'RESET_APP',
 }
 
 const localStorageActivities = () : Activity[] => {
@@ -52,6 +50,13 @@ export const activityReducer = (state : ActivityState = initialState, action : A
     return {
       ...state,
       activities: state.activities.filter(activity => activity.id !== action.payload.id )
+    }
+  }
+
+  if(action.type === 'RESET_APP') {
+    return{
+      activities: [],
+      activeId: ''
     }
   }
   return state;
