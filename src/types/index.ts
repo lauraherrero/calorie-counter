@@ -27,3 +27,7 @@ export type ActivityListProps = {
   activities: Activity[],
   dispatch: React.Dispatch<ActivityActions>
 }
+
+export type CalorieTrackerProps = {
+  activities: Activity[]
+}
