@@ -31,3 +31,8 @@ export type ActivityListProps = {
 export type CalorieTrackerProps = {
   activities: Activity[]
 }
+
+export type CalorieDisplayProps = {
+  calories: number
+  text: string
+}
