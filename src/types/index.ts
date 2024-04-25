@@ -36,3 +36,8 @@ export type CalorieDisplayProps = {
   calories: number
   text: string
 }
+
+export type HeaderProps = {
+  canRestartApp: () => boolean
+  dispatch: Dispatch<ActivityActions>
+}
