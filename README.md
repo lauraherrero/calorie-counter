@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+# Calorie Tracker  🥪🍹🏋️‍♀️📈
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Summary: 📝
 
-Currently, two official plugins are available:
+https://app-calories-tracker.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Project based on a calorie tracker.
+The user has the possibility to add different activities, either food consumed or exercise performed.
+When an activity is added, it appears in a separate list by category, showing the name and the kcal consumed.
+In addition, it is possible to display a total counter of calories consumed from food and a counter of calories burned from exercise. Depending on whether we have a higher consumption of calories burned or consumed, the application will tell us if we are in caloric deficit or surplus.
+The information is saved even if the page is reloaded and we can restart the application from scratch with the restart button.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Technology Stack 💻
+The application has been made from scratch with React using Vite and a custom hook that allows to separate the application logic and have cleaner components. We have also used useMemo that lets you cache the result of a calculation between re-renders.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+<ul>
+  <li>React</li>
+  <li>CustomHook</li>
+  <li>Typescript</li>
+  <li>LocalStorage</li>  
+  <li>Git</li>
+  <li>Vite</li>
+  <li>Tailwind</li>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+</ul>
+
+
+## Instructions ✍
+
+### How to run: 
+
+<pre>
+    <p>npm install <br></p>
+    <p>npm run dev <br></p>
+    
+</pre>
